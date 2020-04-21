@@ -19,8 +19,8 @@ void setup()
 }
 
 int b = 3;       // b for light 'b'ulb
-int c = 1;       // c for count
-int t = 100;     // t for t
+int c = 1;       // c for 'c'ount
+int t = 100;     // t for 't'ime
 
 void loop() 
 {
@@ -42,6 +42,7 @@ void loop()
             t = t / 2;
             Serial.println("“Faster X 2 (Current Speed : X"+String(c)+"”)");    //show following
             tone(8,400,100);    // beep sound for 100 milliseconds
+            delay(700);
         }
     }
     for(b = 13 ; b >= 3 ; b--)
@@ -61,6 +62,7 @@ void loop()
             t = t / 2;
             Serial.println("“Faster X 2 (Current Speed : X"+String(c)+"”)");    //show following
             tone(8,400,100);    // beep sound for 100 milliseconds
+            delay(700);
         }
     }
 }
