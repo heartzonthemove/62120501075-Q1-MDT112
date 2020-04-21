@@ -1,5 +1,5 @@
-void setup()
-{
+void setup() 
+{   
     Serial.begin(9600);  // show in serial monitor
     pinMode(2, INPUT_PULLUP);  // control
     pinMode(3, OUTPUT);
@@ -24,28 +24,7 @@ int t = 100;     // t for 't'ime
 
 void loop() 
 {
-    for(b = 3 ; b <= 13 ; b++)      // chasing right
-    {
-        if(b == 8)
-        {
-            digitalWrite(b,0);  // turn off socket8
-            continue;
-        }
-
-        digitalWrite(b,1);      // switching the LED on
-        delay(t);               // stopping the program for 100 milliseconds
-        digitalWrite(b,0);      // switching the LED off
-        
-        if (digitalRead(2) == 0)
-        {
-            c = c * 2;
-            t = t / 2;
-            Serial.println("“Faster X 2 (Current Speed : X"+String(c)+"”)");    //show following
-            tone(8,400,100);    // beep sound for 100 milliseconds
-            delay(700);
-        }
-    }
-    for(b = 13 ; b >= 3 ; b--)
+    for(b = 3 ; b <= 13 ; b++)  // chasing right
     {
         if(b == 8)
         {
@@ -56,13 +35,34 @@ void loop()
         delay(t);               // stopping the program for 100 milliseconds
         digitalWrite(b,0);      // switching the LED off
 
-        if (digitalRead(2) == 0)
+        if (digitalRead(2) == 0) 
+        {   
+        digitalWrite(b,1);      // switching the LED on
+        delay(t);               // stopping the program for 100 milliseconds
+        digitalWrite(b,0);      // switching the LED off
+        c = c * 2;
+        t = t / 2;
+        Serial.println("“Faster X 2 (Current Speed : X"+String(c)+"”)");    //show following
+        tone(8,400,100);        // beep sound for 100 milliseconds
+        } 
+    }
+    for(b = 13 ; b >= 3 ; b--)  // chasing left
+    {
+        if(b == 8)
+        {
+            digitalWrite(8,0);  // turn off socket8
+            continue;
+        }
+        digitalWrite(b,1);      // switching the LED on
+        delay(t);               // stopping the program for 100 milliseconds
+        digitalWrite(b,0);      // switching the LED off
+
+        if(digitalRead(2) == 0)
         {
             c = c * 2;
             t = t / 2;
             Serial.println("“Faster X 2 (Current Speed : X"+String(c)+"”)");    //show following
             tone(8,400,100);    // beep sound for 100 milliseconds
-            delay(700);
         }
-    }
+    }    
 }
